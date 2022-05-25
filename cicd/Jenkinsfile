@@ -1,0 +1,12 @@
+// Load the Ploigos Jenkins Library
+library identifier: 'vcs-jenkins-library@v1.1.3',
+retriever: modernSCM([
+    $class: 'GitSCMSource',
+    remote: 'https://gitlab.consulting.redhat.com/rhvcs/vcs-jenkins-library.git',
+    credentialsId: 'vcs-jenkins-library'
+])
+
+// run the pipeline
+javaServicePipeline(
+    stepRunnerConfigDir: 'cicd/ploigos-step-runner-config/'
+)
